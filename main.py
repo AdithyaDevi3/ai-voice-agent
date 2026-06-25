@@ -14,7 +14,7 @@ def sts_connect():
     if not deepgram_api_key:
         raise ValueError("Deepgram API key not found in environment variables.")
     sts_ws = websockets.connect(
-        "wss://api.deepgram.com/v1/agent/converse",
+        "wss://agent.deepgram.com/v1/agent/converse",
         subprotocols=["token", deepgram_api_key]
     )
     return sts_ws
@@ -37,8 +37,6 @@ async def handle_text_message(decoded, twilio_ws, sts_ws, streamsid):
 async def sts_sender(sts_ws, audio_queue):
     while True:
         audio_chunk = await audio_queue.get()
-        if audio_chunk is None:
-            break
         await sts_ws.send(audio_chunk)
 
 async def sts_receiver(sts_ws, twilio_ws, streamsid_queue):
@@ -69,7 +67,7 @@ async def twilio_receiver(twilio_ws, audio_queue, streamsid_queue):
             if event == "start":
                 print("Twilio connection started.")
                 start = data["start"]
-                streamsid = data["streamsid"]
+                streamsid = start["streamSid"]
                 streamsid_queue.put_nowait(streamsid)
             elif event == "connected":
                 continue
