@@ -1,0 +1,38 @@
+{
+  "type": "Settings",
+  "audio": {
+    "input": {
+      "encoding": "mulaw",
+      "sample_rate": 8000
+    },
+    "output": {
+      "encoding": "mulaw",
+      "sample_rate": 8000,
+      "container": "none"
+    }
+  },
+  "agent": {
+    "language": "en",
+    "listen": {
+      "provider": {
+        "type": "deepgram",
+        "model": "nova-3"
+      }
+    },
+    "think": {
+      "provider": {
+        "type": "open_ai",
+        "model": "gpt-4o-mini",
+        "temperature": 0.3
+      },
+      "prompt": "You are a professional and friendly medical office receptionist. Help callers schedule appointments. Collect their name, preferred date, preferred time, and reason for visit. Confirm all details before ending the call."
+    },
+    "speak": {
+      "provider": {
+        "type": "deepgram",
+        "model": "aura-2-thalia-en"
+      }
+    },
+    "greeting": "Thank you for calling. How can I help you schedule an appointment today?"
+  }
+}

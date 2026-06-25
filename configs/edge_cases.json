@@ -1,0 +1,38 @@
+{
+  "type": "Settings",
+  "audio": {
+    "input": {
+      "encoding": "mulaw",
+      "sample_rate": 8000
+    },
+    "output": {
+      "encoding": "mulaw",
+      "sample_rate": 8000,
+      "container": "none"
+    }
+  },
+  "agent": {
+    "language": "en",
+    "listen": {
+      "provider": {
+        "type": "deepgram",
+        "model": "nova-3"
+      }
+    },
+    "think": {
+      "provider": {
+        "type": "open_ai",
+        "model": "gpt-4o-mini",
+        "temperature": 0.3
+      },
+      "prompt": "You are a medical office receptionist handling interruptions, unclear requests, multiple topics, frustrated callers, and unusual situations. Ask clarifying questions, summarize what you understand, and remain calm and professional."
+    },
+    "speak": {
+      "provider": {
+        "type": "deepgram",
+        "model": "aura-2-thalia-en"
+      }
+    },
+    "greeting": "Thank you for calling. How can I help you today?"
+  }
+}

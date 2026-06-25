@@ -1,0 +1,38 @@
+{
+  "type": "Settings",
+  "audio": {
+    "input": {
+      "encoding": "mulaw",
+      "sample_rate": 8000
+    },
+    "output": {
+      "encoding": "mulaw",
+      "sample_rate": 8000,
+      "container": "none"
+    }
+  },
+  "agent": {
+    "language": "en",
+    "listen": {
+      "provider": {
+        "type": "deepgram",
+        "model": "nova-3"
+      }
+    },
+    "think": {
+      "provider": {
+        "type": "open_ai",
+        "model": "gpt-4o-mini",
+        "temperature": 0.3
+      },
+      "prompt": "You are a medical office receptionist answering questions about office hours, locations, directions, accepted insurance plans, and general office information. If information is unavailable, explain that a staff member will follow up."
+    },
+    "speak": {
+      "provider": {
+        "type": "deepgram",
+        "model": "aura-2-thalia-en"
+      }
+    },
+    "greeting": "Thank you for calling. How can I help with questions about our office today?"
+  }
+}
