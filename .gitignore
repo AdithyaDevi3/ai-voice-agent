@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+.env
+.env.*
+*.env
+*.env.*
+.envrc
+!.env.example
+!*.env.example
+!*.example.env
+CLAUDE.md
+claude.md
+AGENT.md
+agent.md
+AGENTS.md
+agents.md
